@@ -221,17 +221,19 @@ module.exports = function(app, passport) {
       if (req.body.protonum == 'custom') {
         protonum = req.body.customrange;
       } else {
-        protonum = req.body.protonum;
+        protonum = protocols[req.body.protonum].properties.duration - 1;
       }
       user = req.body.name;
       startdate = moment().startOf('hour').add(req.body.date, 'days').add(req.body.time, 'hours').format();
       enddate = moment().startOf('hour').add(req.body.date, 'days').add(parseInt(req.body.time) + parseInt(protonum), 'hours').format();
+      console.log(startdate, enddate)
     } else {
       startdate = req.body.startdate;
       enddate = req.body.enddate;
       startdate = iSODateString(new Date(startdate));
       enddate = iSODateString(new Date(enddate));
       user = req.body.user;
+      console.log(startdate, enddate)
     }
     name = req.body.id;
     //get the list of scheduled events

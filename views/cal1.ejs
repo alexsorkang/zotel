@@ -41,20 +41,20 @@
         <option value='custom'> custom </option>
 
         <% for (elem in protocols) { %>
-          <option value=<%= protocols[elem].properties.duration %> > <%= protocols[elem].properties.name %> </option>
+          <option value=<%= elem %> > <%= protocols[elem].properties.name %> </option>
         <% } %>
         </select><br>
 
         <div id="custom" class="protocols">
           <div>
-          Duration: <input type="range" name="customrange" id="customrange" min="0" max="48" value="0" oninput="customo.value=customrange.value">
-          <output name="customo" id="customo" for="date">0</output> hours<br>
+          Duration: <input type="range" name="customrange" id="customrange" min="0" max="48" value="0" oninput="customo.value=parseInt(customrange.value) + 1">
+          <output name="customo" id="customo" for="date">1</output> hours<br>
           </div>
         </div>
 
-        <% for (elem in protocols) { %>
+        <% for (var elem in protocols) { %>
           <div id=<%= elem %> class="protocols" style="display:none">
-            <% for (eleme in protocols[elem].properties) { %>
+            <% for (var eleme in protocols[elem].properties) { %>
               <div><%= eleme %>: <%= protocols[elem].properties[eleme] %></div>
             <% } %>
           </div>
