@@ -1,0 +1,12 @@
+{"error":false,"data":
+  [
+    {"properties":{"name":"protocol1", "duration":5},
+    "version":"1.0.0"},
+
+    {"properties":{"name":"protocol2", "duration":2},
+    "version":"1.0.0"},
+
+    {"properties":{"name":"protocol3", "duration":6},
+    "version":"1.0.0"}
+  ]
+}
