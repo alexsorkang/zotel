@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8" />
+  <title>Hotel</title>
+  <link rel="stylesheet" href="/stylesheets/style.css">
+  <link rel="stylesheet" href="/stylesheets/cal-heatmap.css">
+  <!-- <link rel="stylesheet" href="/stylesheets/popup.css"> -->
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+  </head>
+
+
+<body>
+  <div>
+    <br>
+    <h3>PCR Block 10</h3><br>
+    <div id='cal10'></div>
+    <br><br><br><br><br><br>
+
+    <form action="/addevent" method="post">
+    <fieldset>
+
+      <label for="name">Name: </label>
+      <input type="radio" name="name" value="1" checked><FONT style="COLOR: rgb(141, 211, 199);-webkit-text-stroke: .2px black;"> Han </FONT>
+      <input type="radio" name="name" value="2" ><FONT style="COLOR: rgb(255, 255, 179);-webkit-text-stroke: .3px black;"> Kate </FONT>
+      <input type="radio" name="name" value="3" ><FONT style="COLOR: rgb(190, 186, 218);-webkit-text-stroke: .3px black;"> Mia </FONT>
+      <input type="radio" name="name" value="4" ><FONT style="COLOR: rgb(251, 128, 114);-webkit-text-stroke: .3px black;"> Parsa </FONT>
+      <input type="radio" name="name" value="5" ><FONT style="COLOR: rgb(128, 177, 211);-webkit-text-stroke: .3px black;"> Tural </FONT>
+      <input type="radio" name="name" value="6" ><FONT style="COLOR: rgb(253, 180, 98);-webkit-text-stroke: .3px black;"> Zihao </FONT>
+      <input type="radio" name="name" value="7" ><FONT style="COLOR: rgb(179, 222, 105);-webkit-text-stroke: .3px black;"> Suraj </FONT>
+      <br><br>
+
+      Date: <input type="range" id="date" name="date" min="0" max="6" value="0" oninput="amount1.value=date.value + ' days from now'">
+        <output name="amount1" id="amount1" for="date">Today</output><br>
+
+      Time:  <input type="range" id="time" name="time" min="0" max="23" value="0" oninput="amount0.value=time.value + ' hours from now'">
+        <output name="amount0" id="amount0" for="time">Now</output><br>
+
+      Protocol: <select name="protonum" id="proto">
+
+        <option value='custom'> custom </option>
+
+        <% for (elem in protocols) { %>
+          <option value=<%= elem %> > <%= protocols[elem].properties.name %> </option>
+        <% } %>
+        </select><br>
+
+        <div id="custom" class="protocols">
+          <div>
+          Duration: <input type="range" name="customrange" id="customrange" min="0" max="48" value="0" oninput="customo.value=parseInt(customrange.value) + 1">
+          <output name="customo" id="customo" for="date">1</output> hours<br>
+          </div>
+        </div>
+
+        <% for (var elem in protocols) { %>
+          <div id=<%= elem %> class="protocols" style="display:none">
+            <% for (var eleme in protocols[elem].properties) { %>
+              <div><%= eleme %>: <%= protocols[elem].properties[eleme] %></div>
+            <% } %>
+          </div>
+        <% } %>
+
+        <input type="hidden" name="type" value='0'>
+
+        <input type="hidden" name="id" value='556f49cf70969dcf017d8036'>
+        <input type="hidden" name="route" value='cal10'>
+    </fieldset>
+    <input type="submit" value="schedule" />
+  </form>
+  <br>
+  </div>
+
+  <script src="/javascripts/d3.min.js"></script>
+  <script src="/javascripts/cal-heatmap.min.js"></script>
+  <script src="/javascripts/calendar10.js"></script>
+</body>
+</html>

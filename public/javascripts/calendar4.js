@@ -2,13 +2,13 @@
 var switchcase = 0;
 var startdate;
 var enddate;
-var id = '556f49cf70969dcf017d8024';
+var id = '556f49cf70969dcf017d8028';
 
 var cal = new CalHeatMap();
   cal.init({
     start: new Date(),
     id: id,
-    data: '/getData0',
+    data: '/getData4',
     domain: 'day',
     subDomain: 'hour',
     range: 6,
@@ -19,7 +19,7 @@ var cal = new CalHeatMap();
     width: 40
     },
     cellSize: 15,
-    itemSelector: document.getElementById('cal0'),
+    itemSelector: document.getElementById('cal4'),
     legend: [1, 2, 3, 4, 5, 6, 7, 8],
     subDomainTextFormat: '%H',
     highlight: ['now'],
@@ -34,7 +34,7 @@ var cal = new CalHeatMap();
           data: {timestamp: date, id: id, user: $('input[name=\'name\']:checked').val()},
           dataType: 'json'
           });
-        window.setTimeout(function(){cal.update('getData0')}, 600);
+        window.setTimeout(function(){cal.update('getData4')}, 600);
         // }
       } else {
         if (switchcase === 0) {
@@ -51,7 +51,7 @@ var cal = new CalHeatMap();
           data: {startdate: startdate, enddate: enddate, id: id, user: $('input[name=\'name\']:checked').val(), type: 1},
           dataType: 'json'
           });
-          window.setTimeout(function(){cal.update('getData0')}, 600);
+          window.setTimeout(function(){cal.update('getData4')}, 600);
         // }
         }
       }
@@ -63,3 +63,9 @@ $(function() {
         $('#' + $(this).val()).show();
     });
 });
+// $(function() {
+//         $('#proto').change(function(){
+//             $('.customprotocol').hide();
+//             $('#' + $(this).val()).show();
+//         });
+//     });
